@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-app",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev:shell": "pnpm --filter shell dev",
+    "dev:home": "pnpm --filter home dev",
+    "dev:all": "concurrently \"pnpm dev:shell\" \"pnpm dev:home\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.9.3"
+  }
+}
