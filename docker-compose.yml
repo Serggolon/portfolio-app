@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  mf-shell:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shell-app
+    command: pnpm --filter shell dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  mf-home-profile:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: home-profile-app
+    command: pnpm --filter home-profile dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

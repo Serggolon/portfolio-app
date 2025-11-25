@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
+    "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
-    "types": ["node"]
+    "baseUrl": "."
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["mf-shell", "mf-home-profile"]
 }

@@ -1,15 +1,53 @@
 {
-  "name": "portfolio-app",
-  "private": true,
-  "version": "1.0.0",
-  "packageManager": "pnpm@9.0.0",
-  "scripts": {
-    "dev:shell": "pnpm --filter shell dev",
-    "dev:home": "pnpm --filter home dev",
-    "dev:all": "concurrently \"pnpm dev:shell\" \"pnpm dev:home\""
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2",
-    "typescript": "^5.9.3"
-  }
+	"name": "todo-microfrontend-app",
+	"private": true,
+	"version": "1.0.0",
+	"workspaces": [
+		"mf-shell",
+		"mf-home-profile"
+	],
+	"scripts": {
+		"dev": "pnpm -w run dev:shell",
+		"dev:shell": "cross-env NODE_ENV=development node sync-env.js && pnpm --filter shell dev",
+		"dev:profile": "cross-env NODE_ENV=development node sync-env.js && pnpm --filter home-profile dev",
+		"dev:parallel": "pnpm --parallel --filter mf-shell --filter mf-home-profile dev",
+		"dev:all": "cross-env NODE_ENV=development node sync-env.js && pnpm -w run dev:parallel",
+		"dev:test:shell": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter shell dev",
+		"dev:test:profile": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter home-profile dev",
+		"build": "pnpm -w run build:all",
+		"build:all": "node sync-env.js && pnpm --filter \"mf-*\" build",
+		"build:dev": "cross-env NODE_ENV=development node sync-env.js && pnpm --filter \"mf-*\" build",
+		"build:test": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter \"mf-*\" build",
+		"build:prod": "cross-env NODE_ENV=production node sync-env.js && pnpm --filter \"mf-*\" build",
+		"build:cloudflare": "cross-env NODE_ENV=production node sync-env.js && pnpm --filter \"mf-*\" build && npx @cloudflare/next-on-pages --no-color",
+		"clean": "rimraf \"**/.next\" \"**/dist\" \"**/build\" \"**/.turbo\"",
+		"clean:all": "pnpm -w run clean",
+		"type-check": "tsc --noEmit -p tsconfig.json",
+		"type-check:all": "pnpm --recursive type-check",
+		"lint": "eslint . --ext .ts,.tsx",
+		"lint:all": "pnpm --recursive lint"
+	},
+	"dependencies": {
+		"@module-federation/nextjs-mf": "8.8.47",
+		"dotenv": "^17.2.3",
+		"next": "15.5.3",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"webpack": "^5.102.1"
+	},
+	"devDependencies": {
+		"@types/node": "^18.11.9",
+		"@types/react": "^18.0.25",
+		"@types/react-dom": "^18.0.8",
+		"cross-env": "^10.1.0",
+		"typescript": "^5"
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"react",
+				"react-dom"
+			]
+		}
+	}
 }
