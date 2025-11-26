@@ -1,0 +1,6 @@
+name = "porfolio-app"
+compatibility_date = "2024-04-03"
+
+[build]
+command = "pnpm run build:cloudflare"
+cwd = "./"

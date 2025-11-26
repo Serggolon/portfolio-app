@@ -1,5 +1,5 @@
 {
-	"name": "todo-microfrontend-app",
+	"name": "portfolio-app",
 	"private": true,
 	"version": "1.0.0",
 	"workspaces": [
@@ -36,6 +36,7 @@
 		"webpack": "^5.102.1"
 	},
 	"devDependencies": {
+		"@cloudflare/next-on-pages": "^1.13.16",
 		"@types/node": "^18.11.9",
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.8",
