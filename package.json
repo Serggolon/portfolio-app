@@ -15,7 +15,7 @@
 		"dev:test:shell": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter shell dev",
 		"dev:test:profile": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter home-profile dev",
 		"build": "pnpm -w run build:all",
-		"build:all": "node sync-env.js && pnpm --filter \"mf-*\" build",
+		"build:all": "node sync-env-cloudflare.js && pnpm --filter \"mf-*\" build",
 		"build:dev": "cross-env NODE_ENV=development node sync-env.js && pnpm --filter \"mf-*\" build",
 		"build:test": "cross-env NODE_ENV=test node sync-env.js && pnpm --filter \"mf-*\" build",
 		"build:prod": "cross-env NODE_ENV=production node sync-env.js && pnpm --filter \"mf-*\" build",
