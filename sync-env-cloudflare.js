@@ -13,7 +13,7 @@ const ENV_KEYS = [
   "NEXT_PUBLIC_SHELL_URL",
   "NEXT_PUBLIC_PROFILE_URL",
 ];
-
+console.log("Syncing env for Cloudflare Workers... , keys:", ENV_KEYS);
 // Собираем .env текст
 const envText = ENV_KEYS
   .map((key) => `${key}=${process.env[key] ?? ""}`)
