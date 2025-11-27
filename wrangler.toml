@@ -1,5 +1,5 @@
-name = "porfolio-app"
-compatibility_date = "2024-04-03"
+name = "portfolio-app"
+compatibility_date = "2025-01-01"
 
 [build]
 command = "pnpm run build:cloudflare"
