@@ -37,6 +37,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: "porfolio-app"
+          projectName: "portfolio-app"
           directory: "./.vercel/output/static"
           branch: ${{ github.ref_name }}

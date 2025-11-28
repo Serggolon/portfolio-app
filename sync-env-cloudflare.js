@@ -21,7 +21,7 @@ console.log("Syncing env for Cloudflare Workers... , keys:", process.env);
 // );
 
 const envText =
-  `NEXT_PRIVATE_LOCAL_WEBPACK=${process.env.CF_NEXT_PRIVATE_LOCAL_WEBPACK}\n` +
+  `NEXT_PRIVATE_LOCAL_WEBPACK=${"true"}\n` +
   `NODE_ENV=${process.env.NODE_ENV}\n` +
   `NEXT_PUBLIC_HOME_PROFILE_URL=${process.env.NEXT_PUBLIC_HOME_PROFILE_URL}\n` +
   `NEXT_PUBLIC_BACKEND_URL=${process.env.NEXT_PUBLIC_BACKEND_URL}\n` +
