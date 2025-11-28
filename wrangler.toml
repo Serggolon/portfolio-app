@@ -1,6 +1,0 @@
-name = "portfolio-app"
-compatibility_date = "2025-01-01"
-
-[build]
-command = "pnpm run build:cloudflare"
-cwd = "./"
