@@ -7,7 +7,6 @@ const ALLOWED_PREFIXES = [
   "NEXT_PUBLIC_",
   "NEXT_PRIVATE_LOCAL_WEBPACK",
   "NODE_ENV",
-  "BUILD_ENV",
   "API_",
   "SECRET_",
   "JWT_",
