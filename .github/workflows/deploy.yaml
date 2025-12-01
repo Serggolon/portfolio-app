@@ -1,42 +1,51 @@
+name: Deploy to Cloudflare Pages
+
 on:
   push:
     branches:
-      - main
+      - main   # или твоя ветка продакшн
+      - test   # ветка тестирования
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      deployments: write
-
     steps:
-      - name: Checkout
+      # 1️⃣ Клонируем репозиторий
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10
-
-      - name: Setup Node
+      # 2️⃣ Устанавливаем Node.js и pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-          cache: pnpm
+          node-version: 22
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Install deps
-        run: pnpm install --no-frozen-lockfile
+      # 3️⃣ Устанавливаем зависимости
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Build project
-        run: pnpm run build:cloudflare
+      # 4️⃣ Создаем .env файлы для каждого mf-* с помощью sync-env-cloudflare
+      - name: Generate .env for each microfrontend
+        env:
+          NODE_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
+          NEXT_PRIVATE_LOCAL_WEBPACK: ${{ secrets.NEXT_PRIVATE_LOCAL_WEBPACK }}
+          NEXT_PUBLIC_HOME_PROFILE_URL: ${{ secrets.NEXT_PUBLIC_HOME_PROFILE_URL }}
+          NEXT_PUBLIC_FEATURE_BETA: ${{ secrets.NEXT_PUBLIC_FEATURE_BETA }}
+        run: node sync-env-cloudflare.js
 
-      - name: Publish to Cloudflare Pages
+      # 5️⃣ Строим все микрофронтенды
+      - name: Build all microfrontends
+        run: pnpm --filter "mf-*" build
+
+      # 6️⃣ Деплой на Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: "portfolio-app"
-          directory: "./.vercel/output/static"
+          projectName: "portfolio-app"      # точное имя проекта в Cloudflare Pages
+          directory: "./mf-shell/.next"     # путь к собранной статике
           branch: ${{ github.ref_name }}

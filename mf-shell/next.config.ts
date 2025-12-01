@@ -12,8 +12,10 @@ const remote = (isServer: boolean) => {
   };
 };
 
+//NODE_ENV_COMMAND needed for correct standalone output because of Next is setting NODE_ENV to production during build
+//but we need to know what env was used to run the build command
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: process.env.BUILD_ENV === 'production' ? 'standalone' : undefined,
   reactStrictMode: true,
 
   webpack: (config, options) => {

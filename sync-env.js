@@ -1,12 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
-
+console.log(process.env.NODE_ENV, '<<=====================sync-env');
 // Allowed env variable prefixes to be injected into microfrontends
 const ALLOWED_PREFIXES = [
   "NEXT_PUBLIC_",
   "NEXT_PRIVATE_LOCAL_WEBPACK",
   "NODE_ENV",
+  "BUILD_ENV",
   "API_",
   "SECRET_",
   "JWT_",
