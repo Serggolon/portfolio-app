@@ -27,11 +27,17 @@ console.log("Syncing env for Cloudflare Workers... , keys:", process.env);
 //   "\n"
 // );
 
-const envText =
-  `NODE_ENV=${process.env.NODE_ENV}\n` +
-  `NEXT_PRIVATE_LOCAL_WEBPACK=${process.env.NEXT_PRIVATE_LOCAL_WEBPACK}\n` +
-  `NEXT_PUBLIC_FEATURE_BETA=${process.env.NEXT_PUBLIC_FEATURE_BETA}\n` +
-  `NEXT_PUBLIC_HOME_PROFILE_URL=${process.env.NEXT_PUBLIC_HOME_PROFILE_URL}\n`;
+// const envText =
+//   `NODE_ENV=${process.env.NODE_ENV}\n` +
+//   `NEXT_PRIVATE_LOCAL_WEBPACK=${process.env.NEXT_PRIVATE_LOCAL_WEBPACK}\n` +
+//   `NEXT_PUBLIC_FEATURE_BETA=${process.env.NEXT_PUBLIC_FEATURE_BETA}\n` +
+//   `NEXT_PUBLIC_HOME_PROFILE_URL=${process.env.NEXT_PUBLIC_HOME_PROFILE_URL}\n`;
+
+  const envText =
+  `NODE_ENV=${'production'}\n` +
+  `NEXT_PRIVATE_LOCAL_WEBPACK=${true}\n` +
+  `NEXT_PUBLIC_FEATURE_BETA=${false}\n` +
+  `NEXT_PUBLIC_HOME_PROFILE_URL=${'portfolio-app.s-krasnitskiy.workers.dev'}\n`;
 
 console.log("Generated env:\n", envText);
 
