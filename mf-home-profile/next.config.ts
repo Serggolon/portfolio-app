@@ -17,10 +17,6 @@ const nextConfig: NextConfig = {
     );
     return config;
   },
-  extraOptions: {
-    exposePagesDir: true,
-    skipSharingNextInternals: true,
-  },
 };
 
 export default nextConfig;
