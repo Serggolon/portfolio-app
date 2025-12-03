@@ -2,10 +2,7 @@
 	"name": "portfolio-app",
 	"private": true,
 	"version": "1.0.0",
-	"workspaces": [
-		"mf-shell",
-		"mf-home-profile"
-	],
+	"workspaces": ["mf-*"],
 	"scripts": {
 		"dev": "pnpm -w run dev:shell",
 		"dev:shell": "cross-env NODE_ENV=development node sync-env.js && pnpm --filter shell dev",
