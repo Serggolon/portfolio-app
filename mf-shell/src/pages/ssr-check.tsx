@@ -6,4 +6,4 @@ export default function SSRCheck({ time }: { time: string }) {
   return <div>SSR OK: {time}</div>;
 }
 
-export const runtime = 'edge';
+export const runtime = "experimental-edge";
