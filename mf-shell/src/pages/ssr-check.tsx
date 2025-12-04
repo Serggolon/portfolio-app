@@ -5,3 +5,5 @@ export async function getServerSideProps() {
 export default function SSRCheck({ time }: { time: string }) {
   return <div>SSR OK: {time}</div>;
 }
+
+export const runtime = 'edge';

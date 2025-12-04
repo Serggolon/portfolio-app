@@ -14,6 +14,7 @@ const remote = (isServer: boolean) => {
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  distDir: ".vercel/output",
 
   webpack: (config, options) => {
     config.plugins.push(
