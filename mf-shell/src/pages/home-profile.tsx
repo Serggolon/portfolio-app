@@ -14,3 +14,4 @@
 // 		</div>
 // 	)
 // }
+// Temporary disable remote component due to issues with Module Federation and Next.js 13
