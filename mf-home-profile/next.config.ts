@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       new NextFederationPlugin({
         name: "homeProfile",
         filename: "static/chunks/remoteEntry.js",
-        exposes: { "./HomeProfile": "./src/pages/index.tsx" },
+
         shared: {},
         extraOptions: {},
       })
@@ -20,3 +20,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+//        exposes: { "./HomeProfile": "./src/pages/index.tsx" },
