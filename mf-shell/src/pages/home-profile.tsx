@@ -6,12 +6,12 @@
 // 	{ ssr: false } // обязательно выключаем SSR
 // )
 
-// export default function HomeProfilePage() {
-// 	return (
-// 		<div>
-// 			<h1>Todo Stats (remote)</h1>
-// 			<HomeProfileRemote />
-// 		</div>
-// 	)
-// }
+export default function HomeProfilePage() {
+	return (
+		<div>
+			<h1>Todo Stats (remote)</h1>
+			{/* <HomeProfileRemote /> */}
+		</div>
+	)
+}
 // Temporary disable remote component due to issues with Module Federation and Next.js 13
